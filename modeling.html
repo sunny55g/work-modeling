@@ -118,17 +118,7 @@
   .div-bott h3{
   font-size: 35px;
   }
-  .div-bott{
-  text-align:center;
-  }
-  .div-bott p{
-  font-size:24px;
-  }
-  .plusminus {
-    float: right;
-    font-size: 36px;
-    margin-top: -9px;
-  }
+…  }
   .coll-back{
     background-color: #fff;
     color: #111;
@@ -545,7 +535,7 @@
                   <p class="text-start mx-5">
                     A Genome-Scale Metabolic model is a set of inter-dependent linear equations, where the equations represent reactions (assumed to be at their steady state) catalyzed by proteins obtained from the genomic information of the organism. They all have a default objective of ‘Biomass’, which is a merged form of various equations(reactions) and elements(metabolites) required for the model (organism) to survive in an assumed live state backed up by actual wet lab experiments and metabolomics study of the organism. 
                   </p>
-                  <img src="" alt="IAMGES OF GSSM">
+                  <img src="" alt="IAMGES OF GSSM" style="color: red;">
                 </div>
               </div>
               <!-- Objectives of our model: -->
@@ -780,7 +770,8 @@
                       <h5 class="text-start mx-5" style="text-align: left;">Modifications to the GSSMs:</h5>
                       <li class="text-start mx-5" style="text-align: left;">The above mentioned reactions and metabolites were added to each of the models. With The exception of  PpuQY1140 in which the Glyoxalate Shunt catalyzed by malate synthase was borrowed from iJN1463 and added.</li>
                       <li class="text-start mx-5" style="text-align: left;">The Default upper and lower bounds of the reactions were changed from to -999999 to 999999  to a more feasible -1000 to 1000</li>
-                      <h5 class="text-start mx-5" style="text-align: left;">Simulating  Growth coupled production of Santalol:</h5>
+                      <!-- Simulating  Growth coupled production of Santalol: -->
+                      <br><h5 class="text-start mx-5" style="text-align: left;">Simulating  Growth coupled production of Santalol:</h5>
                       <p style="text-align: left; " class="text-start mx-5">In an ideal biological scenario, if the organism produces a secondary metabolite in excess its growth gets sacrificed, To mimic this in our model we had set two objectives:</p>
                       <li style="text-align: left;" class="text-start mx-5">Santalol_secretion : To obtain our product.</li>
                       <li style="text-align: left;" class="text-start mx-5">Biomass: To mimic Organism survival and growth</li>
@@ -788,7 +779,7 @@
                       new_objective = 1.0 Biomass + 1.0 Santalol_secretion <br>
                       Where the upper bound of the objectives corresponds to to the X and Y coordinates of the chosen point in the Production envelope plot built with strain design. The new objective states to the solver of the model to give equal priorities to both Biomass and Santalol_secretion. <br></p>
                       <!-- Diverting Flux towards Santalol production pathway: -->
-                      <h5 class="text-start mx-5" style="text-align: left;">Diverting Flux towards Santalol production pathway:</h5>
+                      <br><h5 class="text-start mx-5" style="text-align: left;">Diverting Flux towards Santalol production pathway:</h5>
                       <p style="text-align: left; " class="text-start mx-5">To find which genes to upregulate in Pseudomonas putida. we first kept the objective as Biomass, At this point it mimicked its Laboratory counter part which can grow solely on EG and TPA (generously provided by Dr. Oliver Brandenberg). For The bacteria to Grow and Produce Santalol we change the objective to “new_objective” .Then we noted the Change of flux and pathways in  the model and observed a branching point in utiliztion of Pyruvate. The reaction catalyzed by Deoxy xylulose-5-phosphate synthase(DXS) which Catalyzed the following reaction: <br>
                       Pyruvate + Glyceraldehyde-3-phosphate -> 1-Deoxy xylulose-5-phosphate <br>
                       was inactive when Biomass was the objective got activated when santalol secretion was set as a co-objective. This reaction Leads to the MEP pathway and helps in production of santalol, as observed from the Flux Mapping of all the three modified  GSSMs. This observation from the Flux Maps and backed up by Dr.jordi (paper required) we Decided to upregulate DXS. 
